@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import time
 
 def compute_error(b, w, points):
     '''
@@ -26,7 +25,6 @@ def step_gradient(b_current, w_current, points, learning_rate):
         b_gradient += (2/N)*((w_current*x+b_current)-y)
         w_gradient += (2/N)*((w_current*x+b_current)-y)*x
        
-
     new_b = b_current - learning_rate*b_gradient        # update the b
     new_w = w_current - learning_rate*w_gradient        # update w
 
@@ -39,7 +37,7 @@ def gradient_descent(points, init_b, init_w, learning_rate, num_iters):
     '''
     b = init_b
     w = init_w
-    plt.ion() # 开启interactive mode 成功的关键函数
+    plt.ion() # must turn on interactive mode,  if you want draw the figure dynamicly
     plt.figure()
    
     for i in range(num_iters):
@@ -65,9 +63,7 @@ def gradient_descent(points, init_b, init_w, learning_rate, num_iters):
     return [b,w]
 
 def run():
-    print()
-    points = np.genfromtxt('data.csv', delimiter=',')
-
+    points = np.genfromtxt('data.csv', delimiter=',')       # obtain data from .csv file 
 
     learning_rate = 1e-5
     init_b = 0
